@@ -40,3 +40,9 @@ def parse_input(path):
     
     return contributors, projects
 
+def dump_output(outputpath, projectList):
+    with open(outputpath, "w") as f:
+        f.write(len(projectList))
+        for project in projectList:
+            f.write(project.name)
+            f.write(project.contributors)
