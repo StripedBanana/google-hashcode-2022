@@ -4,8 +4,6 @@ sys.path.append(".")
 
 from model.project import Project
 from model.contributor import Contributor
-from model.role import Role
-from model.skill import Skill
 
 
 def parse_input(path):
@@ -19,23 +17,23 @@ def parse_input(path):
     # Parse contributors
     contributorCount, projectCount = lines[0].split(" ")
     for i in range(0, int(contributorCount)):
-        currentLine = currentLine + 1
+        currentLine += 1
         contributorName, skillCount = lines[currentLine].split(" ")
-        skills = []
+        skills = dict()
         for j in range(0, int(skillCount)):
-            currentLine = currentLine + 1
+            currentLine += 1
             skillName, skillLevel = lines[currentLine].split(" ")
-            skills.append(Skill(skillName, skillLevel))
+            skills[skillName] = skillLevel
         contributors.append(Contributor(contributorName, skills))
 
     for i in range(0, int(projectCount)):
-        currentLine = currentLine + 1
+        currentLine += 1
         projectName, completionTime, reward, bestBefore, roleCount = lines[currentLine].split(" ")
-        roles = []
+        roles = dict()
         for j in range(0, int(roleCount)):
-            currentLine = currentLine + 1
+            currentLine += 1
             roleName, roleSkillCap = lines[currentLine].split(" ")
-            roles.append(Role(roleName, roleSkillCap))
+            roles[roleName] = roleSkillCap
         projects.append(Project(projectName, completionTime, reward, bestBefore, roles))
     
     return contributors, projects

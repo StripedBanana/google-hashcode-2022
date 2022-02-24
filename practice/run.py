@@ -3,8 +3,6 @@ sys.path.append(".")
 
 from model.project import Project
 from model.contributor import Contributor
-from model.role import Role
-from model.skill import Skill
 
 import model.project
 
@@ -26,11 +24,10 @@ def run(contrib, projects):
 
 Projects = list[Project]
 def update_skill_levels(projects: Projects):
-    
     for project in projects:
-        for role in projects.roles:
-            if role.contributor.skills[role.name] >= role.cap:
-                role.contributor.skills[role.name] += 1
+        for k, v in projects.roles.items():
+            if v.contributor.skills[k] >= v.cap:
+                v.contributor.skills[k] += 1
         
 
 def add_project():
