@@ -1,5 +1,4 @@
 class Role:
-    def __init__(self, name, cap):
-        self.name = name
+    def __init__(self, cap):
         self.cap = cap
         self.contributor = ""

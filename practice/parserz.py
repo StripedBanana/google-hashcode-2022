@@ -4,7 +4,7 @@ sys.path.append(".")
 
 from model.project import Project
 from model.contributor import Contributor
-
+from model.role import Role
 
 def parse_input(path):
     contributors = []
@@ -33,7 +33,7 @@ def parse_input(path):
         for j in range(0, int(roleCount)):
             currentLine += 1
             roleName, roleSkillCap = lines[currentLine].split(" ")
-            roles[roleName] = roleSkillCap
+            roles[roleName] = Role(roleSkillCap)
         projects.append(Project(projectName, completionTime, reward, bestBefore, roles))
     
     return contributors, projects
